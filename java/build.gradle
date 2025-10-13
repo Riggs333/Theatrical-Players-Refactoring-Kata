@@ -1,10 +1,10 @@
 plugins {
     id 'java'
-    id 'info.solidsoft.pitest' version '1.9.0'
+    id 'info.solidsoft.pitest' version '1.19.0-rc.2'
 }
 
-group 'kata'
-version '1.0-SNAPSHOT'
+group = 'kata'
+version = '1.0-SNAPSHOT'
 
 java {
     toolchain {
@@ -24,12 +24,13 @@ test {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
-    testImplementation 'com.approvaltests:approvaltests:23.0.1'
-    testImplementation 'org.assertj:assertj-core:3.25.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter:6.0.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'com.approvaltests:approvaltests:25.5.0'
+    testImplementation 'org.assertj:assertj-core:3.27.6'
 }
 
 pitest {
     targetClasses = ['theatricalplays.*']
-    junit5PluginVersion = '1.0.0'
+    junit5PluginVersion = '1.2.3'
 }
