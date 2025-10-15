@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.approvaltests.Approvals.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StatementPrinterTests {
 
@@ -39,8 +40,8 @@ class StatementPrinterTests {
                 new Performance("as-like", 55)));
 
         StatementPrinter statementPrinter = new StatementPrinter();
-        Assertions.assertThrows(Error.class, () -> {
-            statementPrinter.print(invoice, plays);
-        });
+        Error error = Assertions.assertThrows(Error.class,
+            () -> statementPrinter.print(invoice, plays));
+        assertEquals("unknown type: history", error.getMessage());
     }
 }
